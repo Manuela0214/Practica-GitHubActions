@@ -20,7 +20,8 @@ jobs:
         java-version: 21.0.1
         distribution: 'adopt' 
 
-    - run: mvn clean install
+    - run: mvn clean 
+    - run: mvn install
 
   test:
     needs: build
