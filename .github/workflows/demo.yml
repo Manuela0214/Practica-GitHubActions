@@ -7,8 +7,10 @@ on:
 
 jobs:
   demo_trabajo:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - name: Echo the message
         run: |
           echo "Demo 1 de GitHub Actions"
+
+
