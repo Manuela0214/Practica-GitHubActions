@@ -19,8 +19,7 @@ jobs:
       with:
         java-version: 21.0.1
         distribution: 'adopt' 
-    - uses: actions/setup-node@v4
-    - run: npm install
+
     - run: mvn clean install
 
   test:
@@ -32,7 +31,6 @@ jobs:
         with:
           java-version: 21.0.1
       - uses: actions/setup-node@v4
-      - run: npm install
       - run: mvn test
 
 
