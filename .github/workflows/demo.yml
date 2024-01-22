@@ -18,7 +18,7 @@ jobs:
       uses: actions/setup-java@v4
       with:
         java-version: 21.0.1
-        distribution: ubuntu-latest 
+        distribution: 'adopt' 
     - uses: actions/setup-node@v4
     - run: npm install
     - run: mvn clean install
