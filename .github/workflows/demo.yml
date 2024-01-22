@@ -1,16 +1,33 @@
-name: Demo github action
+name: Selenium con JUnit - CI
 
 on:
   push:
-    branches:
-      - main
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
-  demo_trabajo:
+  build: 
     runs-on: ubuntu-latest
+ 
     steps:
-      - name: Echo the message
-        run: |
-          echo "Demo 1 de GitHub Actions"
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up JDK 21.0.1
+      uses: actions/setup-java@v3
+      with:
+        java-version: '21.0.1'
+        distribution: 'adopt'
+
+    - name: Download Edge WebDriver
+      run: |
+        wget https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/?form=MA13LH  -O edgedriver_win64.zip
+        unzip edgedriver_win64.zip
+        chmod +x msedgedriver.exe
+        sudo mv msedgedriver.exe /usr/local/bin/
+     
+    - name: Build with Maven and Run Test
+      run: mvn -B clean test
 
 
