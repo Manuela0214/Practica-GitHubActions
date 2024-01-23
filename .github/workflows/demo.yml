@@ -22,8 +22,9 @@ jobs:
 
     - name: Download and install Microsoft Edge WebDriver
       run: |
-        curl -L https://msedgedriver.azureedge.net/120.0.2210.144/edgedriver_linux64.zip -o edgedriver.zip
-        sudo unzip edgedriver_linux64.zip -d /usr/local/bin
+        EDGE_VERSION=$(curl -s https://msedgedriver.azureedge.net/LATEST_STABLE)
+        curl -L https://msedgedriver.azureedge.net/$EDGE_VERSION/edgedriver_linux64.zip -o edgedriver.zip
+        sudo unzip edgedriver.zip -d /usr/local/bin
         sudo chmod +x /usr/local/bin/msedgedriver
 
     - run: mvn clean 
